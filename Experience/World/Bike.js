@@ -15,6 +15,18 @@ export default class Bike {
     }
 
     setModel() {
+        // Shadows
+        this.actualBike.children.forEach((child) => {
+            child.castShadow = true;
+            child.receiveShadow = true;
+
+            if (child instanceof THREE.Group) {
+                child.children.forEach((groupchild) => {
+                    groupchild.castShadow = true;
+                    groupchild.receiveShadow = true;
+                });
+            }
+        });
         this.scene.add(this.actualBike);
     }
 
